@@ -20,6 +20,7 @@
      - Framework preset: `None` or `Vite`
      - Build command: `npm run build`
      - Build output directory: `dist`
+     - **Install command:** `npm install` (use this if `npm ci` fails with lock file sync errors)
    - Click **Save and Deploy**
 
 ## Option 2: Wrangler CLI
@@ -44,3 +45,17 @@
 
 ## Your site will be live at:
 `https://kalyani-portfolio.pages.dev` (or a custom domain you configure)
+
+---
+
+## Troubleshooting
+
+### "package.json and package-lock.json are in sync" / picomatch version error
+
+If the build fails during **Installing tools and dependencies** with a lock file sync error:
+
+1. Go to **Settings** → **Builds & deployments** → **Build configuration**
+2. Set **Install command** to: `npm install` (instead of the default `npm ci`)
+3. Save and redeploy
+
+`npm install` is more forgiving than `npm ci` when lock files differ between local and Cloudflare's Node/npm versions.
