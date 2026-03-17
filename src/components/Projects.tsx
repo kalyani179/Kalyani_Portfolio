@@ -20,7 +20,7 @@ export function Projects() {
   return (
     <section
       id="projects"
-      className="py-20 px-6 bg-gray-50 dark:bg-black transition-colors duration-300"
+      className="py-20 px-6 bg-gray-50 dark:bg-transparent transition-colors duration-300"
     >
       <div className="max-w-5xl mx-auto">
         <h2 className="font-heading font-bold text-3xl text-gray-900 dark:text-white mb-12 text-center">

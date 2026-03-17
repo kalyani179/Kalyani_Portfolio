@@ -3,3 +3,5 @@ export const socialLinks = {
   linkedin: 'https://www.linkedin.com/in/kalyani-dantuluri/',
   instagram: 'https://www.instagram.com/kalyani___d/',
 }
+
+export const resumeUrl = '/Resume.pdf'

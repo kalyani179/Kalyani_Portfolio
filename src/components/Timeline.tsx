@@ -54,7 +54,7 @@ const education = [
 
 export function Timeline() {
   return (
-    <div className="bg-gray-50 dark:bg-black transition-colors duration-300">
+    <div className="bg-gray-50 dark:bg-transparent transition-colors duration-300">
       {/* Experience Section */}
       <section id="experience" className="py-20 px-6">
         <div className="max-w-4xl mx-auto">

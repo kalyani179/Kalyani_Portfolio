@@ -45,6 +45,9 @@ export default {
         heading: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
         body: ['Inter', 'system-ui', 'sans-serif'],
         mono: ['JetBrains Mono', 'monospace'],
+        display: ['Syne', 'system-ui', 'sans-serif'],
+        accent: ['Cormorant Garamond', 'Georgia', 'serif'],
+        about: ['Outfit', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         'hero': ['2.5rem', { lineHeight: '1.2' }],
@@ -53,6 +56,8 @@ export default {
       animation: {
         'fade-in': 'fadeIn 0.6s ease-out forwards',
         'slide-up': 'slideUp 0.6s ease-out forwards',
+        'shimmer': 'shimmer 2s ease-in-out infinite',
+        'outline-shine': 'outlineShine 2s ease-in-out infinite',
       },
       keyframes: {
         fadeIn: {
@@ -62,6 +67,14 @@ export default {
         slideUp: {
           '0%': { opacity: '0', transform: 'translateY(20px)' },
           '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        shimmer: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(200%)' },
+        },
+        outlineShine: {
+          '0%, 100%': { boxShadow: '0 0 0 2px rgba(255,255,255,0.3), 0 0 12px rgba(147,51,234,0.4)' },
+          '50%': { boxShadow: '0 0 0 2px rgba(255,255,255,0.8), 0 0 20px rgba(147,51,234,0.8)' },
         },
       },
     },

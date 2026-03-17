@@ -13,10 +13,26 @@
     display: none; /* Chrome, Safari, Opera */
   }
   body {
-    @apply font-body antialiased bg-gray-50 dark:bg-black text-gray-900 dark:text-white;
+    @apply font-body antialiased text-gray-900 dark:text-white;
     scrollbar-width: none;
+  }
+  body {
+    @apply bg-gray-50;
+  }
+  .dark body {
+    background: linear-gradient(to bottom, #000000 0%, #0a0612 40%, #0d0818 70%, #050308 100%);
   }
   body::-webkit-scrollbar {
     display: none;
   }
 }
+
+/* Custom cursor: hide default when active */
+body.custom-cursor-active {
+  cursor: none;
+}
+
+body.custom-cursor-active * {
+  cursor: none;
+}
+
