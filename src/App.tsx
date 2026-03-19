@@ -5,14 +5,16 @@ import { TechStack } from './components/TechStack'
 import { Contact } from './components/Contact'
 import { Navbar } from './components/Navbar'
 import { CustomCursor } from './components/CustomCursor'
+import { PixelSnow } from './components/PixelSnow'
 
 function App() {
   return (
     <>
+      <PixelSnow />
       <CustomCursor />
-      <Navbar />
-      <main>
+        <Navbar />
         <Introduction />
+      <main>
         <Timeline />
         <Projects />
         <TechStack />

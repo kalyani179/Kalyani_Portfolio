@@ -20,11 +20,19 @@
     @apply bg-gray-50;
   }
   .dark body {
-    background: linear-gradient(to bottom, #000000 0%, #0a0612 40%, #0d0818 70%, #050308 100%);
+    background: #000000;
   }
   body::-webkit-scrollbar {
     display: none;
   }
+}
+
+/*
+ * react-smokey-fluid-cursor defaults to z-index: -9999, which sits behind the
+ * Galaxy background (-z-10). Raise it so the fluid trail is visible on top.
+ */
+#smokey-fluid-canvas {
+  z-index: 9998 !important;
 }
 
 /* Custom cursor: hide default when active */
@@ -34,5 +42,25 @@ body.custom-cursor-active {
 
 body.custom-cursor-active * {
   cursor: none;
+}
+
+:root {
+  --gradient1: linear-gradient(270deg, #A21AE6 0%, #70E 108.04%);
+}
+
+.colored-text {
+  background: var(--gradient1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-button {
+  background: var(--gradient1);
+  color: white;
+}
+.gradient-button:hover {
+  opacity: 0.9;
+  filter: brightness(1.05);
 }
 
