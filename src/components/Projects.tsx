@@ -1,91 +1,127 @@
-import { ExternalLink } from 'lucide-react'
+import { useState } from 'react'
+import { ArrowRight, ArrowUpRight } from 'lucide-react'
+import ScrollStack, { ScrollStackItem } from './ScrollStack'
 
+// Project hero images are in public/
 const projects = [
   {
     title: 'MVGR Voices',
-    period: "Jan'24 – Mar'24",
-    description: 'A platform for students to express ideas through podcasts and blogs.',
-    technologies: ['React', 'Tailwind CSS', 'Express.js', 'Node.js', 'MongoDB', 'Firebase', 'Chatbot', 'Docker'],
-    achievements: [
-      'Over 2,000 users in 10 days',
-      'Reduced loading time by 50%',
-      'Implemented chatbot and real-time notifications',
-      'Theme-switching functionality',
-    ],
+    year: '2024',
+    category: 'Web Platform',
     link: 'https://mvgrvoices.onrender.com/',
+    image: '/mvgr-voices-hero.png',
+  },
+  {
+    title: 'Modern Dictionary',
+    year: '2023',
+    category: 'Web Platform',
+    link: 'https://moderndictionary.onrender.com/',
+    image: '/MD.png',
+  },
+  {
+    title: 'MVGR Voices',
+    year: '2024',
+    category: 'Web Platform',
+    link: 'https://mvgrvoices.onrender.com/',
+    image: '/mvgr-voices-hero.png',
+  },
+  {
+    title: 'Modern Dictionary',
+    year: '2023',
+    category: 'Web Platform',
+    link: 'https://moderndictionary.onrender.com/',
+    image: '/MD.png',
   },
 ]
+
+function ProjectCardContent({ project }: { project: (typeof projects)[0] }) {
+  const [isArrowHovered, setIsArrowHovered] = useState(false)
+
+  return (
+    <a
+      href={project.link}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="block h-full group"
+    >
+      <div
+        className="relative flex flex-col h-full rounded-t-[10px] overflow-hidden"
+        style={{
+          background: 'rgb(20, 20, 28)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          border: '1px solid rgba(192, 132, 252, 0.25)',
+          boxShadow: '0 0 40px rgba(147, 51, 234, 0.15), 0 0 0 1px rgba(192, 132, 252, 0.1)',
+        }}
+      >
+        <div
+          className="absolute inset-0 pointer-events-none rounded-t-[14px]"
+          style={{
+            background: 'radial-gradient(ellipse 80% 60% at 100% 0%, rgba(147, 51, 234, 0.12) 0%, transparent 60%)',
+          }}
+        />
+        <div className="relative px-6 pt-5 pb-4 text-[#E8E8E8]">
+          <div className="flex items-center justify-between text-sm font-mono text-[#E0E0E0] opacity-90">
+            <span>{project.year}</span>
+            <span>{project.category}</span>
+          </div>
+          <div className="h-px w-full mt-3 mb-4 bg-purple-400/20" />
+          <div className="flex items-center justify-between gap-4">
+            <h3 className="font-heading font-normal text-xl sm:text-4xl text-left text-[#E8E8E8]">
+              {project.title}
+            </h3>
+            <div
+              className="shrink-0 text-purple-300 group-hover:text-purple-200 transition-colors"
+              onMouseEnter={() => setIsArrowHovered(true)}
+              onMouseLeave={() => setIsArrowHovered(false)}
+            >
+              {isArrowHovered ? (
+                <ArrowUpRight size={48} strokeWidth={2} />
+              ) : (
+                <ArrowRight size={48} strokeWidth={2} />
+              )}
+            </div>
+          </div>
+        </div>
+        <div className="relative pb-5 sm:pb-6">
+          <div className="relative aspect-[2.5/1] min-h-[180px] overflow-hidden">
+            <img
+              src={project.image}
+              alt={project.title}
+              className="w-full h-full"
+              onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+            />
+          </div>
+        </div>
+      </div>
+    </a>
+  )
+}
 
 export function Projects() {
   return (
     <section
       id="projects"
-      className="py-20 px-6 bg-gray-50 dark:bg-transparent transition-colors duration-300"
+      className="py-12 px-2 sm:px-4 bg-gray-50 dark:bg-transparent transition-colors duration-300"
     >
-      <div className="max-w-5xl mx-auto">
-        <h2 className="font-heading font-bold text-3xl text-gray-900 dark:text-white mb-12 text-center">
-          Projects
-        </h2>
+      <h2 className="font-heading font-bold text-3xl text-gray-900 dark:text-white mb-8 text-center">
+        Projects
+      </h2>
 
-        <div className="grid gap-8 md:grid-cols-1">
-          {projects.map((project, i) => (
-            <article
-              key={project.title}
-              className="group p-6 rounded-2xl bg-gray-100 dark:bg-[#111111] border border-purple-700/30 hover:border-purple-600/50 hover:shadow-xl hover:shadow-purple-900/20 transition-all duration-300 animate-slide-up opacity-0"
-              style={{ animationDelay: `${i * 150}ms`, animationFillMode: 'forwards' }}
-            >
-              <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4">
-                <div>
-                  <h3 className="font-heading font-bold text-xl text-gray-900 dark:text-white group-hover:text-purple-700 transition-colors">
-                    {project.title}
-                  </h3>
-                  <span className="text-sm font-mono text-purple-700">{project.period}</span>
-                </div>
-                <a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-purple-700 hover:bg-purple-600 text-white font-heading font-semibold text-sm transition-colors shrink-0"
-                >
-                  View Project
-                  <ExternalLink size={16} />
-                </a>
-              </div>
-
-              <p className="mt-4 text-gray-600 dark:text-zinc-400">
-                {project.description}
-              </p>
-
-              <div className="flex flex-wrap gap-2 mt-4">
-                {project.technologies.map((tech) => (
-                  <span
-                    key={tech}
-                    className="px-3 py-1 text-xs font-mono rounded-full bg-purple-700/20 dark:bg-purple-700/30 text-purple-700 dark:text-purple-400"
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <ul className="mt-6 space-y-2">
-                <span className="text-sm font-heading font-semibold text-gray-900 dark:text-white">
-                  Achievements:
-                </span>
-                {project.achievements.map((a) => (
-                  <li key={a} className="text-sm text-gray-600 dark:text-zinc-400 flex items-start gap-2">
-                    <span className="text-purple-700 mt-1.5">•</span>
-                    {a}
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-
-        <div className="mt-12 p-8 rounded-2xl border border-dashed border-purple-700/30 text-center text-gray-500 dark:text-zinc-500">
-          <p className="font-heading font-medium">More projects coming soon</p>
-        </div>
-      </div>
+      <ScrollStack
+        useWindowScroll
+        itemDistance={120}
+        itemScale={0}
+        itemStackDistance={40}
+        baseScale={1}
+        className="projects-scroll-stack"
+      >
+        {projects.map((project, i) => (
+          <ScrollStackItem key={i}>
+            <ProjectCardContent project={project} />
+          </ScrollStackItem>
+        ))}
+      </ScrollStack>
     </section>
   )
 }

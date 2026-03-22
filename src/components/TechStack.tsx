@@ -1,6 +1,29 @@
 import { useRef, useState, useEffect } from 'react'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
+const TECH_ICON_SLUGS: Record<string, string> = {
+  C: 'c',
+  'C++': 'cplusplus',
+  Java: 'java',
+  Python: 'python',
+  JavaScript: 'javascript',
+  TypeScript: 'typescript',
+  HTML: 'html5',
+  CSS: 'css3',
+  'Tailwind CSS': 'tailwindcss',
+  Bootstrap: 'bootstrap',
+  'React.js': 'react',
+  Angular: 'angular',
+  NodeJS: 'nodedotjs',
+  ExpressJS: 'express',
+  MongoDB: 'mongodb',
+  MySQL: 'mysql',
+  Docker: 'docker',
+  Git: 'git',
+  Github: 'github',
+  Redis: 'redis',
+}
+
 const techCategories = [
   {
     category: 'Languages',
@@ -11,16 +34,12 @@ const techCategories = [
     technologies: ['HTML', 'CSS', 'Tailwind CSS', 'Bootstrap', 'JavaScript', 'React.js', 'Angular'],
   },
   {
-    category: 'Backend',
-    technologies: ['NodeJS', 'ExpressJS', 'EJS', 'Objection.js'],
-  },
-  {
-    category: 'Databases',
-    technologies: ['MongoDB', 'MySQL'],
+    category: 'Backend & Databases',
+    technologies: ['NodeJS', 'ExpressJS', 'MongoDB', 'MySQL', 'Redis'],
   },
   {
     category: 'Tools & Concepts',
-    technologies: ['DSA', 'System Design', 'Kafka', 'Docker', 'Git', 'Github'],
+    technologies: ['DSA', 'System Design', 'Docker', 'Git', 'Github'],
   },
 ]
 
@@ -96,9 +115,9 @@ export function TechStack() {
   return (
     <section
       id="tech-stack"
-      className="py-20 px-6 bg-gray-50 dark:bg-transparent transition-colors duration-300 overflow-visible"
+      className="py-12 px-6 bg-gray-50 dark:bg-transparent transition-colors duration-300 overflow-visible"
     >
-      <div className="max-w-full my-20 mx-auto">
+      <div className="max-w-full my-4 mx-auto">
         <h2 className="font-heading font-bold text-3xl text-gray-900 dark:text-white mb-12 text-center">
           Tech Stack
         </h2>
@@ -165,19 +184,29 @@ export function TechStack() {
                       {category}
                     </h3>
                     <div className="flex flex-wrap gap-2">
-                      {technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className={`px-3 py-1.5 text-sm font-body rounded-lg transition-all duration-300 ${
-                            isActive
-                              ? 'bg-purple-500/15 text-[#E0E0E0] border border-purple-400/20'
-                              : 'bg-purple-500/10 text-[#A0A0A0] border border-purple-500/10'
-                          }`}
-                          style={{ lineHeight: 1.5, fontWeight: 500 }}
-                        >
-                          {tech}
-                        </span>
-                      ))}
+                      {technologies.map((tech) => {
+                        const iconSlug = TECH_ICON_SLUGS[tech]
+                        return (
+                          <span
+                            key={tech}
+                            className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-body rounded-lg transition-all duration-300 ${
+                              isActive
+                                ? 'bg-purple-500/15 text-[#E0E0E0] border border-purple-400/20'
+                                : 'bg-purple-500/10 text-[#A0A0A0] border border-purple-500/10'
+                            }`}
+                            style={{ lineHeight: 1.5, fontWeight: 500 }}
+                          >
+                            {iconSlug && (
+                              <img
+                                src={`https://cdn.simpleicons.org/${iconSlug}?viewbox=auto&size=16`}
+                                alt=""
+                                className="w-4 h-4 shrink-0"
+                              />
+                            )}
+                            {tech}
+                          </span>
+                        )
+                      })}
                     </div>
                   </div>
                 </div>

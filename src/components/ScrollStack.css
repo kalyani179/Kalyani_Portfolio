@@ -1,0 +1,66 @@
+.scroll-stack-scroller {
+    position: relative;
+    overflow-y: visible;
+    overflow-x: visible;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+}
+
+.scroll-stack-scroller.use-window-scroll {
+    overflow: visible;
+}
+
+.scroll-stack-inner {
+    padding: 10vh 1rem 40rem;
+    min-height: 100vh;
+    perspective: 1200px;
+    perspective-origin: center top;
+}
+
+.projects-scroll-stack .scroll-stack-inner {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-bottom: 25vh;
+}
+
+.projects-scroll-stack .scroll-stack-card {
+    border-radius: 10px 10px 0 0;
+    max-width: 60rem;
+    margin: 20px auto;
+}
+
+@media (min-width: 640px) {
+    .projects-scroll-stack .scroll-stack-inner {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+.scroll-stack-card-wrapper {
+    position: relative;
+}
+
+.scroll-stack-card {
+    transform-origin: top center;
+    will-change: transform, filter;
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+    min-height: 20rem;
+    margin: 20px 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    position: relative;
+    background: transparent;
+    overflow: hidden;
+    transition: border-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.scroll-stack-card[data-active="true"] {
+    box-shadow: 0 0 0 1px rgba(192, 132, 252, 0.25), 0 0 40px rgba(147, 51, 234, 0.15);
+}
