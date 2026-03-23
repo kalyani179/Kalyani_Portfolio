@@ -13,7 +13,7 @@ const projects = [
   },
   {
     title: 'Modern Dictionary',
-    year: '2023',
+    year: '2026',
     category: 'Personal Project',
     link: 'https://moderndictionary.onrender.com/',
     image: '/MD.png',
