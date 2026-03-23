@@ -58,6 +58,7 @@ export default {
         'slide-up': 'slideUp 0.6s ease-out forwards',
         'shimmer': 'shimmer 2s ease-in-out infinite',
         'outline-shine': 'outlineShine 2s ease-in-out infinite',
+        'contact-border-spin': 'contactBorderSpin 3s linear infinite',
       },
       keyframes: {
         fadeIn: {
@@ -75,6 +76,10 @@ export default {
         outlineShine: {
           '0%, 100%': { boxShadow: '0 0 0 2px rgba(255,255,255,0.3), 0 0 12px rgba(147,51,234,0.4)' },
           '50%': { boxShadow: '0 0 0 2px rgba(255,255,255,0.8), 0 0 20px rgba(147,51,234,0.8)' },
+        },
+        contactBorderSpin: {
+          '0%': { transform: 'translate(-50%, -50%) rotate(0deg)' },
+          '100%': { transform: 'translate(-50%, -50%) rotate(360deg)' },
         },
       },
     },

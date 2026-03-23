@@ -3,64 +3,70 @@
 @tailwind utilities;
 
 /* Hide scrollbar but keep scroll functionality */
+
 @layer base {
-  html {
-    scroll-behavior: smooth;
-    scrollbar-width: none; /* Firefox */
-    -ms-overflow-style: none; /* IE/Edge */
-  }
-  html::-webkit-scrollbar {
-    display: none; /* Chrome, Safari, Opera */
-  }
-  body {
-    @apply font-body antialiased text-gray-900 dark:text-white;
-    scrollbar-width: none;
-  }
-  body {
-    @apply bg-gray-50;
-  }
-  .dark body {
-    background: #000000;
-  }
-  body::-webkit-scrollbar {
-    display: none;
-  }
+    html {
+        scroll-behavior: auto;
+        scrollbar-width: none;
+        /* Firefox */
+        -ms-overflow-style: none;
+        /* IE/Edge */
+    }
+    html::-webkit-scrollbar {
+        display: none;
+        /* Chrome, Safari, Opera */
+    }
+    body {
+        @apply font-body antialiased text-gray-900 dark:text-white;
+        scrollbar-width: none;
+    }
+    body {
+        @apply bg-gray-50;
+    }
+    .dark body {
+        background: #000000;
+    }
+    body::-webkit-scrollbar {
+        display: none;
+    }
 }
+
 
 /*
  * react-smokey-fluid-cursor defaults to z-index: -9999, which sits behind the
  * Galaxy background (-z-10). Raise it so the fluid trail is visible on top.
  */
+
 #smokey-fluid-canvas {
-  z-index: 9998 !important;
+    z-index: 9998 !important;
+    pointer-events: none;
 }
 
-/* Custom cursor: hide default when active */
-body.custom-cursor-active {
-  cursor: none;
-}
 
+/* Custom cursor: hide system cursor; ring + smoke everywhere (no hand on buttons) */
+
+body.custom-cursor-active,
 body.custom-cursor-active * {
-  cursor: none;
+    cursor: none !important;
 }
 
 :root {
-  --gradient1: linear-gradient(270deg, #A21AE6 0%, #70E 108.04%);
+    --gradient1: linear-gradient(270deg, #A21AE6 0%, #70E 108.04%);
 }
 
 .colored-text {
-  background: var(--gradient1);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+    background: var(--gradient1);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .gradient-button {
-  background: var(--gradient1);
-  color: white;
-}
-.gradient-button:hover {
-  opacity: 0.9;
-  filter: brightness(1.05);
+    background: var(--gradient1);
+    color: white;
 }
 
+.gradient-button:hover {
+    opacity: 0.9;
+    filter: brightness(1.05);
+}

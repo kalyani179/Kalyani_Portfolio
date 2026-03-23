@@ -10,7 +10,8 @@
         "deploy": "npm run build && npx wrangler pages deploy dist --project-name=kalyani-portfolio"
     },
     "dependencies": {
-        "lenis": "^1.3.19",
+        "framer-motion": "^12.38.0",
+        "lenis": "^1.3.20",
         "lucide-react": "^0.460.0",
         "react": "^18.3.1",
         "react-dom": "^18.3.1",

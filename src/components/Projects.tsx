@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import { ArrowRight, ArrowUpRight } from 'lucide-react'
 import ScrollStack, { ScrollStackItem } from './ScrollStack'
+import { ArrowHoverSwap } from './ArrowHoverSwap'
 
 // Project hero images are in public/
 const projects = [
@@ -14,28 +14,14 @@ const projects = [
   {
     title: 'Modern Dictionary',
     year: '2023',
-    category: 'Web Platform',
+    category: 'Personal Project',
     link: 'https://moderndictionary.onrender.com/',
     image: '/MD.png',
-  },
-  {
-    title: 'MVGR Voices',
-    year: '2024',
-    category: 'Web Platform',
-    link: 'https://mvgrvoices.onrender.com/',
-    image: '/mvgr-voices-hero.png',
-  },
-  {
-    title: 'Modern Dictionary',
-    year: '2023',
-    category: 'Web Platform',
-    link: 'https://moderndictionary.onrender.com/',
-    image: '/MD.png',
-  },
+  }
 ]
 
 function ProjectCardContent({ project }: { project: (typeof projects)[0] }) {
-  const [isArrowHovered, setIsArrowHovered] = useState(false)
+  const [cardActive, setCardActive] = useState(false)
 
   return (
     <a
@@ -43,6 +29,11 @@ function ProjectCardContent({ project }: { project: (typeof projects)[0] }) {
       target="_blank"
       rel="noopener noreferrer"
       className="block h-full group"
+      onMouseEnter={() => setCardActive(true)}
+      onMouseLeave={() => setCardActive(false)}
+      onFocus={() => setCardActive(true)}
+      onBlur={() => setCardActive(false)}
+      onPointerDown={() => setCardActive(true)}
     >
       <div
         className="relative flex flex-col h-full rounded-t-[10px] overflow-hidden"
@@ -70,16 +61,8 @@ function ProjectCardContent({ project }: { project: (typeof projects)[0] }) {
             <h3 className="font-heading font-normal text-xl sm:text-4xl text-left text-[#E8E8E8]">
               {project.title}
             </h3>
-            <div
-              className="shrink-0 text-purple-300 group-hover:text-purple-200 transition-colors"
-              onMouseEnter={() => setIsArrowHovered(true)}
-              onMouseLeave={() => setIsArrowHovered(false)}
-            >
-              {isArrowHovered ? (
-                <ArrowUpRight size={48} strokeWidth={2} />
-              ) : (
-                <ArrowRight size={48} strokeWidth={2} />
-              )}
+            <div className="shrink-0 text-purple-300 group-hover:text-purple-200 transition-colors pointer-events-none">
+              <ArrowHoverSwap active={cardActive} size={48} strokeWidth={2} />
             </div>
           </div>
         </div>
@@ -102,23 +85,24 @@ export function Projects() {
   return (
     <section
       id="projects"
-      className="py-12 px-2 sm:px-4 bg-gray-50 dark:bg-transparent transition-colors duration-300"
+      className="relative isolate bg-gray-50 dark:bg-transparent transition-colors duration-300"
     >
-      <h2 className="font-heading font-bold text-3xl text-gray-900 dark:text-white mb-8 text-center">
+      <h2 className="font-heading font-bold text-3xl text-gray-900 dark:text-white pt-32 pb-4 text-center">
         Projects
       </h2>
 
       <ScrollStack
-        useWindowScroll
-        itemDistance={120}
-        itemScale={0}
-        itemStackDistance={40}
-        baseScale={1}
-        className="projects-scroll-stack"
+        cardOffset={28}
+        cardTopBase={55}
+        minScale={0.88}
+        scaleStep={0.12}
+        cardClassName="relative origin-top w-full max-w-3xl overflow-hidden rounded-t-[10px]"
       >
         {projects.map((project, i) => (
           <ScrollStackItem key={i}>
-            <ProjectCardContent project={project} />
+            <div className="px-2 sm:px-4">
+              <ProjectCardContent project={project} />
+            </div>
           </ScrollStackItem>
         ))}
       </ScrollStack>

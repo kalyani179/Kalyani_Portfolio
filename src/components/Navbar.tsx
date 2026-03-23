@@ -7,7 +7,7 @@ const navLinks = [
   { href: '#experience', label: 'Experience' },
   { href: '#education', label: 'Education' },
   { href: '#projects', label: 'Projects' },
-  { href: '#tech-stack', label: 'Tech Stack' },
+  { href: '#skills', label: 'Skills' },
   { href: '#contact', label: 'Contact' },
 ]
 
@@ -33,7 +33,7 @@ export function Navbar() {
               <a
                 key={link.href}
                 href={link.href}
-                className="text-sm lg:text-base font-medium text-white/90 hover:colored-text transition-colors"
+                className="text-sm lg:text-base font-medium text-white/90 hover:text-purple-400 transition-colors"
               >
                 {link.label}
               </a>
@@ -73,7 +73,7 @@ export function Navbar() {
               key={link.href}
               href={link.href}
               onClick={() => setOpen(false)}
-              className="block py-2 text-white hover:colored-text"
+              className="block py-2 text-white hover:text-purple-400"
             >
               {link.label}
             </a>
@@ -83,7 +83,7 @@ export function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             onClick={() => setOpen(false)}
-            className="block py-2 text-white hover:colored-text"
+            className="block py-2 text-white hover:text-purple-400"
           >
             View Resume
           </a>

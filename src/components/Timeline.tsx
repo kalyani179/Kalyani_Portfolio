@@ -6,25 +6,25 @@ const experience = [
     period: "Sep'25 – Present",
     role: 'SDE-1',
     company: 'Akrivia HCM',
-    description: 'Contributing to the development and enhancement of HR Management Software. Hyderabad, Telangana, India.',
+    description: 'Contributing to the development and enhancement of HR Management Software',
   },
   {
     period: "Dec'24 – Aug'25",
     role: 'SDE-Intern',
     company: 'Akrivia HCM',
-    description: 'HR Management Software development. Hyderabad, Telangana, India.',
+    description: 'Completed tasks assigned by mentors and gained hands-on experience in MEAN Stack',
   },
   {
     period: "Sep'24 – Dec'24",
     role: 'Full Stack Developer',
-    company: 'QOptars (IIT Hyderabad Incubation Center)',
-    description: 'Developing a website for accessing drone data using the MERN Stack',
+    company: 'Qoptars (IIT Hyderabad Inc. Hub)',
+    description: 'Developed a website for tracking flood related data for government officials using MERN Stack',
   },
   {
     period: "Sep'23 – Feb'24",
     role: 'App Developer Intern',
     company: 'Novizit',
-    description: 'Frontend development for mobile application & website using React Native and Tailwind CSS',
+    description: 'Frontend development for mobile application MVP using React Native and Tailwind CSS',
   },
   {
     period: "Jul'23 – Dec'23",
@@ -38,7 +38,7 @@ const education = [
   {
     period: '2021 – 2025',
     institution: 'Maharaj Vijayram Gajapathi Raj College Of Engineering, India',
-    details: 'B.Tech in Computer Science Engineering | CGPA: 9.22/10 (expected)',
+    details: 'B.Tech in CSE | CGPA: 9.22/10',
   },
   {
     period: '2019 – 2021',
@@ -73,6 +73,7 @@ export function Timeline() {
                   period={item.period}
                   description={item.description}
                   icon={<Briefcase className="text-purple-700" size={20} />}
+                  current={i === 0}
                 />
               ))}
             </div>
@@ -81,7 +82,7 @@ export function Timeline() {
       </section>
 
       {/* Education Section */}
-      <section id="education" className="py-20 px-6 border-t border-purple-700/20">
+      <section id="education" className="py-20 px-6">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-heading font-bold text-3xl text-gray-900 dark:text-white mb-12 text-center flex items-center justify-center gap-2">
             <GraduationCap className="text-purple-700" size={32} />
@@ -114,9 +115,10 @@ interface TimelineItemProps {
   period: string
   description?: string
   icon: React.ReactNode
+  current?: boolean
 }
 
-function TimelineItem({ company, role, period, description, icon }: TimelineItemProps) {
+function TimelineItem({ company, role, period, description, icon, current }: TimelineItemProps) {
   const { ref, isInView } = useInView(0.15)
 
   return (
@@ -126,15 +128,24 @@ function TimelineItem({ company, role, period, description, icon }: TimelineItem
         isInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
     >
-      <div className="hidden md:flex shrink-0 w-12 h-12 rounded-full bg-purple-700/20 dark:bg-purple-700/30 items-center justify-center -ml-6 md:ml-0 md:absolute md:left-1/2 md:-translate-x-1/2 z-10">
+      <div className={`hidden md:flex shrink-0 w-12 h-12 rounded-full bg-purple-700/20 dark:bg-purple-700/30 items-center justify-center -ml-6 md:ml-0 md:absolute md:left-1/2 md:-translate-x-1/2 z-10 transition-opacity ${current ? 'opacity-100 border border-purple-500' : 'opacity-90'}`}>
         {icon}
       </div>
       <div className="md:w-[calc(50%-3rem)] md:odd:ml-auto md:odd:pl-12 md:odd:pr-0 md:even:pr-12 md:even:pl-0 pl-14 md:pl-0">
-        <div className="p-4 rounded-xl bg-gray-100 dark:bg-[#111111] border border-purple-700/30 hover:border-purple-600/50 transition-colors">
+        <div
+          className={`p-4 rounded-xl bg-gray-100 dark:bg-[#111111] border transition-colors ${
+            current
+              ? 'border-purple-500 shadow-[0_0_18px_rgba(147,51,234,0.35)] hover:border-purple-400'
+              : 'border-purple-600/50'
+          }`}
+        >
           {/* First: Company / Institution name */}
-          <h4 className="font-heading font-semibold text-lg text-gray-900 dark:text-white">
-            {company}
-          </h4>
+          <div className="flex items-center justify-between gap-3">
+            <h4 className="font-heading font-semibold text-lg text-gray-900 dark:text-white">
+              {company}
+            </h4>
+            
+          </div>
           {/* Second: Role left, Period right - same row */}
           <div className="mt-1 flex flex-wrap items-baseline justify-between gap-2">
             <p className="text-purple-600 dark:text-purple-400 font-medium">{role}</p>

@@ -9,7 +9,7 @@ const TECH_ICON_SLUGS: Record<string, string> = {
   JavaScript: 'javascript',
   TypeScript: 'typescript',
   HTML: 'html5',
-  CSS: 'css3',
+  CSS: 'css',
   'Tailwind CSS': 'tailwindcss',
   Bootstrap: 'bootstrap',
   'React.js': 'react',
@@ -114,12 +114,12 @@ export function TechStack() {
 
   return (
     <section
-      id="tech-stack"
+      id="skills"
       className="py-12 px-6 bg-gray-50 dark:bg-transparent transition-colors duration-300 overflow-visible"
     >
       <div className="max-w-full my-4 mx-auto">
-        <h2 className="font-heading font-bold text-3xl text-gray-900 dark:text-white mb-12 text-center">
-          Tech Stack
+        <h2 className="font-heading font-bold text-3xl text-gray-900 dark:text-white text-center">
+          Skills
         </h2>
 
         <div className="relative overflow-visible">

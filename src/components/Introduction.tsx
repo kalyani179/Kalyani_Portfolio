@@ -1,7 +1,10 @@
-import { ArrowRight } from 'lucide-react'
+import { useState } from 'react'
 import { resumeUrl } from '../config'
+import { ArrowHoverSwap } from './ArrowHoverSwap'
 
 export function Introduction() {
+  const [resumeHovered, setResumeHovered] = useState(false)
+
   return (
     <section
       id="intro"
@@ -31,22 +34,30 @@ export function Introduction() {
             </div>
           </div>
           <p className="font-body text-lg text-zinc-300 leading-relaxed">
-            I work as SDE-1 at Akrivia HCM and build impactful software that scales. Specialized in the{' '}
+            I work as <span className="font-semibold text-white">
+              SDE-1
+            </span> at <a href="https://akriviahcm.com/" target="_blank" rel="noopener noreferrer" className="text-purple-400">Akrivia HCM</a>. Specialized in the{' '}
             <span className="font-semibold text-white">
-              MEAN Stack
-            </span>{' '}
-            Passionate about clean code, performance, and user-centric design.
+              MEAN   
+            </span> Stack and <span className="font-semibold text-white">MERN</span> Stack.
+            Passionate about building scalable and efficient software solutions.
           </p>
           <a
             href={resumeUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="group inline-flex items-center gap-2 w-fit px-6 py-3 rounded-full gradient-button font-heading font-semibold transition-all animate-outline-shine motion-reduce:animate-none"
+            onMouseEnter={() => setResumeHovered(true)}
+            onMouseLeave={() => setResumeHovered(false)}
+            onFocus={() => setResumeHovered(true)}
+            onBlur={() => setResumeHovered(false)}
           >
             View Resume
-            <ArrowRight
-              className="w-5 h-5 transition-transform duration-200 group-hover:translate-x-1"
+            <ArrowHoverSwap
+              active={resumeHovered}
+              size={20}
               strokeWidth={2.5}
+              inactiveRightClassName="group-hover:translate-x-1"
             />
           </a>
         </div>
