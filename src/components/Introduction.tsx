@@ -8,7 +8,7 @@ export function Introduction() {
   return (
     <section
       id="intro"
-      className="min-h-screen flex flex-col justify-start pt-16 px-6 pb-20 max-sm:pt-14 max-sm:px-4 max-sm:pb-16 transition-colors duration-300"
+      className="min-h-screen max-sm:min-h-0 flex flex-col justify-start pt-16 px-6 pb-20 max-sm:pt-14 max-sm:px-4 max-sm:pb-8 transition-colors duration-300"
     >
       <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 max-sm:gap-10 items-start animate-fade-in">
         {/* Left: Large name */}

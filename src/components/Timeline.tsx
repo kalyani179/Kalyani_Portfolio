@@ -56,7 +56,7 @@ export function Timeline() {
   return (
     <div className="bg-gray-50 dark:bg-transparent transition-colors duration-300">
       {/* Experience Section */}
-      <section id="experience" className="py-20 px-6 max-sm:py-12 max-sm:px-4">
+      <section id="experience" className="py-20 px-6 max-sm:px-4 max-sm:pt-5 max-sm:pb-12">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-heading font-bold text-3xl text-gray-900 dark:text-white mb-12 max-sm:text-2xl max-sm:mb-8 text-center">
             Experience
