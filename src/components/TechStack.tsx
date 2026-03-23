@@ -4,7 +4,7 @@ import { ChevronLeft, ChevronRight } from 'lucide-react'
 const TECH_ICON_SLUGS: Record<string, string> = {
   C: 'c',
   'C++': 'cplusplus',
-  Java: 'java',
+  Java: 'openjdk',
   Python: 'python',
   JavaScript: 'javascript',
   TypeScript: 'typescript',
@@ -118,7 +118,7 @@ export function TechStack() {
   return (
     <section
       id="skills"
-      className="py-12 px-6 bg-gray-50 dark:bg-transparent lg:pt-32 transition-colors duration-300 overflow-visible max-sm:py-8 max-sm:px-4"
+      className="py-12 px-6 bg-gray-50 dark:bg-transparent lg:pt-36 transition-colors duration-300 overflow-visible max-sm:py-8 max-sm:px-4"
     >
       <div className="max-w-full my-4 mx-auto max-sm:my-2">
         <h2 className="font-heading font-bold text-3xl text-gray-900 dark:text-white text-center max-sm:text-2xl max-sm:px-2">
@@ -131,9 +131,9 @@ export function TechStack() {
             type="button"
             onClick={() => scrollToIndex((activeIndex - 1 + techCategories.length) % techCategories.length)}
             aria-label="Previous card"
-            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full flex items-center justify-center bg-purple-500/50 border border-white/20 text-white transition-all cursor-pointer shadow-lg max-sm:left-1 max-sm:min-h-11 max-sm:min-w-11 max-sm:h-11 max-sm:w-11 max-sm:touch-manipulation"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full flex items-center justify-center bg-purple-500/50 border border-white/20 text-white transition-all cursor-pointer shadow-lg max-sm:left-1 max-sm:h-7 max-sm:w-7 max-sm:touch-manipulation"
           >
-            <ChevronLeft size={18} strokeWidth={2} />
+            <ChevronLeft className="h-3 w-3 sm:h-[18px] sm:w-[18px]" strokeWidth={2} aria-hidden />
           </button>
 
           {/* Next button - loops to first when on last */}
@@ -141,9 +141,9 @@ export function TechStack() {
             type="button"
             onClick={() => scrollToIndex((activeIndex + 1) % techCategories.length)}
             aria-label="Next card"
-            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full flex items-center justify-center bg-purple-500/50 border border-white/20 text-white transition-all cursor-pointer shadow-lg max-sm:right-1 max-sm:min-h-11 max-sm:min-w-11 max-sm:h-11 max-sm:w-11 max-sm:touch-manipulation"
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full flex items-center justify-center bg-purple-500/50 border border-white/20 text-white transition-all cursor-pointer shadow-lg max-sm:right-1 max-sm:h-7 max-sm:w-7 max-sm:touch-manipulation"
           >
-            <ChevronRight size={18} strokeWidth={2} />
+            <ChevronRight className="h-3 w-3 sm:h-[18px] sm:w-[18px]" strokeWidth={2} aria-hidden />
           </button>
 
           <div

@@ -1,4 +1,4 @@
-import { Briefcase, GraduationCap } from 'lucide-react'
+import { Briefcase } from 'lucide-react'
 import { useInView } from '../hooks/useInView'
 
 const experience = [
@@ -34,29 +34,29 @@ const experience = [
   },
 ]
 
-const education = [
-  {
-    period: '2021 – 2025',
-    institution: 'Maharaj Vijayram Gajapathi Raj College Of Engineering, India',
-    details: 'B.Tech in CSE | CGPA: 9.22/10',
-  },
-  {
-    period: '2019 – 2021',
-    institution: 'Sri Chaitanya Junior College, India',
-    details: 'BIE (Class XII) | Aggregate: 99%',
-  },
-  {
-    period: '2006 – 2019',
-    institution: 'Dr. Besant School, India',
-    details: 'SSC (Class X) | CGPA: 10/10',
-  },
-]
+// const education = [
+//   {
+//     period: '2021 – 2025',
+//     institution: 'Maharaj Vijayram Gajapathi Raj College Of Engineering, India',
+//     details: 'B.Tech in CSE | CGPA: 9.22/10',
+//   },
+//   {
+//     period: '2019 – 2021',
+//     institution: 'Sri Chaitanya Junior College, India',
+//     details: 'BIE (Class XII) | Aggregate: 99%',
+//   },
+//   {
+//     period: '2006 – 2019',
+//     institution: 'Dr. Besant School, India',
+//     details: 'SSC (Class X) | CGPA: 10/10',
+//   },
+// ]
 
 export function Timeline() {
   return (
     <div className="bg-gray-50 dark:bg-transparent transition-colors duration-300">
       {/* Experience Section */}
-      <section id="experience" className="py-20 px-6 max-sm:px-4 max-sm:pt-5 max-sm:pb-12">
+      <section id="experience" className="py-20 px-6 max-sm:px-4 max-sm:pt-12 max-sm:pb-12">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-heading font-bold text-3xl text-gray-900 dark:text-white mb-12 max-sm:text-2xl max-sm:mb-8 text-center">
             Experience
@@ -81,7 +81,7 @@ export function Timeline() {
         </div>
       </section>
 
-      {/* Education Section */}
+      {/* Education Section — commented out for now (restore `education` data + GraduationCap import)
       <section id="education" className="py-20 px-6 max-sm:py-12 max-sm:px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="font-heading font-bold text-3xl text-gray-900 dark:text-white mb-12 max-sm:text-2xl max-sm:mb-8 text-center flex items-center justify-center gap-2 max-sm:flex-wrap">
@@ -105,6 +105,7 @@ export function Timeline() {
           </div>
         </div>
       </section>
+      */}
     </div>
   )
 }
