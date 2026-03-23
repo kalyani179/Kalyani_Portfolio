@@ -85,6 +85,9 @@ export function TechStack() {
   }, [])
 
   useEffect(() => {
+    if (typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      return
+    }
     const container = scrollRef.current
     if (!container) return
 
@@ -115,35 +118,37 @@ export function TechStack() {
   return (
     <section
       id="skills"
-      className="py-12 px-6 bg-gray-50 dark:bg-transparent transition-colors duration-300 overflow-visible"
+      className="py-12 px-6 bg-gray-50 dark:bg-transparent lg:pt-32 transition-colors duration-300 overflow-visible max-sm:py-8 max-sm:px-4"
     >
-      <div className="max-w-full my-4 mx-auto">
-        <h2 className="font-heading font-bold text-3xl text-gray-900 dark:text-white text-center">
+      <div className="max-w-full my-4 mx-auto max-sm:my-2">
+        <h2 className="font-heading font-bold text-3xl text-gray-900 dark:text-white text-center max-sm:text-2xl max-sm:px-2">
           Skills
         </h2>
 
         <div className="relative overflow-visible">
           {/* Prev button - loops to last when on first */}
           <button
+            type="button"
             onClick={() => scrollToIndex((activeIndex - 1 + techCategories.length) % techCategories.length)}
             aria-label="Previous card"
-            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full flex items-center justify-center bg-purple-500/50 border border-white/20 text-white transition-all cursor-pointer shadow-lg"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full flex items-center justify-center bg-purple-500/50 border border-white/20 text-white transition-all cursor-pointer shadow-lg max-sm:left-1 max-sm:min-h-11 max-sm:min-w-11 max-sm:h-11 max-sm:w-11 max-sm:touch-manipulation"
           >
             <ChevronLeft size={18} strokeWidth={2} />
           </button>
 
           {/* Next button - loops to first when on last */}
           <button
+            type="button"
             onClick={() => scrollToIndex((activeIndex + 1) % techCategories.length)}
             aria-label="Next card"
-            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full flex items-center justify-center bg-purple-500/50 border border-white/20 text-white transition-all cursor-pointer shadow-lg"
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-10 w-8 h-8 rounded-full flex items-center justify-center bg-purple-500/50 border border-white/20 text-white transition-all cursor-pointer shadow-lg max-sm:right-1 max-sm:min-h-11 max-sm:min-w-11 max-sm:h-11 max-sm:w-11 max-sm:touch-manipulation"
           >
             <ChevronRight size={18} strokeWidth={2} />
           </button>
 
           <div
             ref={scrollRef}
-            className="flex gap-6 overflow-x-auto py-10 pb-4 px-14 sm:px-20 snap-x snap-mandatory scroll-smooth scrollbar-hide"
+            className="flex gap-6 overflow-x-auto py-10 pb-4 px-14 sm:px-20 snap-x snap-mandatory scroll-smooth scrollbar-hide max-sm:gap-4 max-sm:py-8 max-sm:px-10 max-sm:overscroll-x-contain max-sm:[-webkit-overflow-scrolling:touch]"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {techCategories.map(({ category, technologies }, i) => {
@@ -152,8 +157,10 @@ export function TechStack() {
                 <div
                   key={category}
                   ref={(el) => { cardRefs.current[i] = el }}
-                  className={`relative flex-shrink-0 w-[280px] sm:w-[320px] min-h-[240px] p-8 rounded-3xl overflow-hidden snap-center transition-all duration-500 ease-out ${
-                    isActive ? 'scale-105 opacity-100' : 'opacity-35 scale-90'
+                  className={`relative flex-shrink-0 w-[280px] sm:w-[320px] min-h-[240px] p-8 rounded-3xl overflow-hidden snap-center transition-all duration-500 ease-out max-sm:w-[min(17.5rem,calc(100vw-5rem))] max-sm:min-h-[220px] max-sm:p-5 max-sm:rounded-2xl ${
+                    isActive
+                      ? 'scale-105 opacity-100 max-sm:scale-100'
+                      : 'opacity-35 scale-90 max-sm:scale-95'
                   }`}
                   style={{
                     background: isActive
@@ -176,20 +183,20 @@ export function TechStack() {
                   />
                   <div className="relative">
                     <h3
-                      className={`font-heading font-medium text-lg mb-4 transition-colors duration-300 ${
+                      className={`font-heading font-medium text-lg mb-4 transition-colors duration-300 max-sm:text-base max-sm:mb-3 ${
                         isActive ? 'text-[#E8E8E8]' : 'text-[#B0B0B0]'
                       }`}
                       style={{ letterSpacing: '0.02em' }}
                     >
                       {category}
                     </h3>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-2 max-sm:gap-1.5">
                       {technologies.map((tech) => {
                         const iconSlug = TECH_ICON_SLUGS[tech]
                         return (
                           <span
                             key={tech}
-                            className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-body rounded-lg transition-all duration-300 ${
+                            className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-sm font-body rounded-lg transition-all duration-300 max-sm:px-2.5 max-sm:py-1 max-sm:text-xs ${
                               isActive
                                 ? 'bg-purple-500/15 text-[#E0E0E0] border border-purple-400/20'
                                 : 'bg-purple-500/10 text-[#A0A0A0] border border-purple-500/10'
