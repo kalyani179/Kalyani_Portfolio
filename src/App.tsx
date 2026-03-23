@@ -6,12 +6,14 @@ import { Contact } from './components/Contact'
 import { Navbar } from './components/Navbar'
 import { CustomCursor } from './components/CustomCursor'
 import { PixelSnow } from './components/PixelSnow'
+import { ScrollToTop } from './components/ScrollToTop'
 
 function App() {
   return (
     <>
       <PixelSnow />
       <CustomCursor />
+      <ScrollToTop />
         <Navbar />
         <Introduction />
       <main>
